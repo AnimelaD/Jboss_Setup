@@ -1,16 +1,11 @@
 ---
-- name: Install JBoss EAP
+- name: Deploy JBoss EAP on Multi OS
   hosts: app
-  become: true
-  
-  pre_tasks:
-    - name: Validate connection to hosts
-      ansible.builtin.ping:
+  become: yes
+  gather_facts: yes
 
-  tasks:
-    - name: Run RHEL Jboss instance role
-      ansible.builtin.include_role:
-        name: JbossEAP_Install
+  roles:
+    - JbossEAP_Install
 
   
 
