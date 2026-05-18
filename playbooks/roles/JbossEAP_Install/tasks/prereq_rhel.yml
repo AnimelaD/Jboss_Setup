@@ -2,7 +2,7 @@
 - name: Install requied packages on RHEL
   ansible.builtin.yum:
     name:
-      - java-11-openjdk
+      - java-21-openjdk.x86_64
       - unzip
       - tar
       - wget
