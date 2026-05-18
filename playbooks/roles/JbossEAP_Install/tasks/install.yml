@@ -1,10 +1,10 @@
 ---
 - name: Copy Jboss EAP Installer
   ansible.builtin.copy:
-    src: "{{ jboss_zip }}"
+    src: "{{ jboss_local_source_path }}"
     dest: "/tmp/{{ jboss_zip | basename }}"
     owner: "{{ jboss_user }}"
-    group: "{{ jboss_user }} |default(jboss_user) }}"
+    group: "{{ jboss_group }} |default(jboss_group ) }}"
     mode: '0644'
    
 - name: Unzip Jboss EAP Installer
@@ -13,7 +13,8 @@
     dest: "{{ jboss_install_dir }}"
     remote_src: yes
     owner: "{{ jboss_user }}"
-    group: "{{ jboss_user }} |default(jboss_user) }}"
+    group: "{{ jboss_group }} |default(jboss_group ) }}"
+
 
 - name: Set permissions for Jboss Installation Directory
   ansible.builtin.file:
@@ -21,4 +22,4 @@
     state: directory
     recursive: yes
     owner: "{{ jboss_user }}"
-    group: "{{ jboss_user }} |default(jboss_user) }}"
+    group: "{{ jboss_group }} |default(jboss_group ) }}"

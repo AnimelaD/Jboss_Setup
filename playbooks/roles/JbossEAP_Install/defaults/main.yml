@@ -7,3 +7,4 @@ jboss_zip: jboss-eap-8.0.0.zip
 java_version_ubuntu: openjdk-8-jdk
 java_version_rhel: java-1.8.0-openjdk
 # defaults file for JbossEAP_Install
+jboss_local_source_path: "/tmp/jboss-eap-8.1.0.zip"
