@@ -1,6 +1,6 @@
 ---
 - name: Install requied packages on RHEL
-  ansible.buitlin.yum:
+  ansible.builtin.yum:
     name:
       - "{{ java_version_rhel | default('java-1.8.0-openjdk') }}"
       - unzip
@@ -20,5 +20,5 @@
      path: "{{ jboss_install_dir }}"
      state: directory
      owner: "{{ jboss_user }}"
-     group: "{{ jboss_user }} |default(jboss_user) }}"
+     group: "{{ jboss_group }} |default(jboss_group) }}"
      mode: '0755'

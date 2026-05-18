@@ -1,12 +1,6 @@
 ---
-- name: Deploy JBoss EAP on Multi OS
-  hosts: app
-  become: yes
-  gather_facts: yes
-
+- name: Deploy JBoss EAP on Target Servers
+  hosts: all
+  become: true
   roles:
-    - JbossEAP_Install
-
-  
-
-
+    - role: JbossEAP_Install
