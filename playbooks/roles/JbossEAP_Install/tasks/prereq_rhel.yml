@@ -2,7 +2,7 @@
 - name: Install requied packages on RHEL
   ansible.builtin.yum:
     name:
-      - "{{ java_version_rhel | default('java-1.8.0-openjdk') }}"
+      - java-11-openjdk
       - unzip
       - tar
       - wget

@@ -2,7 +2,7 @@
 - name: Install required packages on Ubuntu
   ansible.builtin.apt:
     name:
-      - "{{ java_version_ubuntu | default('openjdk-8-jdk') }}"
+      - openjdk-11-jdk
       - unzip
       - tar
       - wget
@@ -20,5 +20,5 @@
     path: "{{ jboss_install_dir }}"
     state: directory
     owner: "{{ jboss_user }}"
-    group: "{{ jboss_user }} |default(jboss_user) }}"
+    group: "{{ jboss_group }} |default(jboss_group ) }}"
     mode: '0755'
