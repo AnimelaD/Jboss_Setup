@@ -1,0 +1,20 @@
+---
+- name: Deploy JBoss systemd service file
+  ansible.builtin.template:
+    src: jboss.service.j2
+    dest: /etc/systemd/system/jboss.service
+    mode: "0644"
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Enable JBoss service
+  ansible.builtin.systemd:
+    name: jboss
+    enabled: yes
+
+- name: Start JBoss service
+  ansible.builtin.systemd:
+    name: jboss
+    state: started

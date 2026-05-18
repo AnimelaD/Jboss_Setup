@@ -1,0 +1,17 @@
+---
+- name: Install JBoss EAP
+  hosts: app
+  become: true
+  
+  pre_tasks:
+    - name: Validate connection to hosts
+      ansible.builtin.ping:
+
+  tasks:
+    - name: Run RHEL Jboss instance role
+      ansible.builtin.include_role:
+        name: JbossEAP_Install
+
+  
+
+

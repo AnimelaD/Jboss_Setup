@@ -1,0 +1,24 @@
+---
+- name: Install required packages on Ubuntu
+  ansible.builtin.apt:
+    name:
+      - "{{ java_version_ubuntu | default('openjdk-8-jdk') }}"
+      - unzip
+      - tar
+      - wget
+    state: present
+   
+- name: Create Jboss User
+  ansible.builtin.user:
+    name: "{{ jboss_user }}"
+    state: present
+    create_home: yes
+    shell: /bin/bash
+
+- name: Create Installation Directory
+  ansible.builtin.file:
+    path: "{{ jboss_install_dir }}"
+    state: directory
+    owner: "{{ jboss_user }}"
+    group: "{{ jboss_user }} |default(jboss_user) }}"
+    mode: '0755'

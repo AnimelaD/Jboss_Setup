@@ -1,0 +1,21 @@
+---
+# tasks file for JbossEAP_Install
+- name: Detect OS Family
+  ansible.builtin.debug:
+    msg: "Detected OS Family: {{ ansible_os_family }}"
+
+- name: Run rhel pre-tasks
+  ansible.builtin.include_tasks: prereq_rhel.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Run ubuntu pre-tasks
+  ansible.builtin.include_tasks: prereq_ubuntu.yml
+  when: ansible_os_family == "Debian"
+
+- name: Run rhel install tasks
+  ansible.builtin.include_tasks: install_rhel.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Run ubuntu install tasks
+  ansible.builtin.include_tasks: install_ubuntu.yml
+  when: ansible_os_family == "Debian"
